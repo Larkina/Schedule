@@ -1,0 +1,36 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{CD7F847C-4AE2-4906-BCCC-ED1896AB838D}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Schedule.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="Schedule">
+			<MSBuild Projects="Schedule.dproj"/>
+		</Target>
+		<Target Name="Schedule:Clean">
+			<MSBuild Targets="Clean" Projects="Schedule.dproj"/>
+		</Target>
+		<Target Name="Schedule:Make">
+			<MSBuild Targets="Make" Projects="Schedule.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="Schedule"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="Schedule:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="Schedule:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
